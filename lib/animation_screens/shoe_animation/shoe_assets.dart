@@ -16,11 +16,11 @@ class ShoeAssets {
     "KD13 RP",
   ];
   static final List<String> prices = [
-    "Rs 11,897",
-    "Rs 11,495",
-    "Rs 10,099",
-    "Rs 12,995",
-    "Rs 11,495",
+    "₹ 11,897",
+    "₹ 11,495",
+    "₹ 10,099",
+    "₹ 12,995",
+    "₹ 11,495",
   ];
   static final List<String> images = [
     "assets/red_shoe.png",

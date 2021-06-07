@@ -19,6 +19,12 @@ class _ShoeAnimationState extends State<ShoeAnimation> {
 
   final double sidespace = 30;
 
+  Widget horizontalLine() => Container(
+        width: double.infinity,
+        height: 0.8,
+        color: Colors.grey.shade200,
+      );
+
   Widget shoeTile(int index) => Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -127,27 +133,15 @@ class _ShoeAnimationState extends State<ShoeAnimation> {
                   ),
                   //
                   SizedBox(height: 20),
-                  Container(
-                    width: double.infinity,
-                    height: 0.7,
-                    color: Colors.grey.shade300,
-                  ),
+                  horizontalLine(),
                   SizedBox(height: 20),
                   shoeTile(0),
                   SizedBox(height: 5),
-                  Container(
-                    width: double.infinity,
-                    height: 0.7,
-                    color: Colors.grey.shade300,
-                  ),
+                  horizontalLine(),
                   SizedBox(height: 20),
                   shoeTile(1),
                   SizedBox(height: 5),
-                  Container(
-                    width: double.infinity,
-                    height: 0.7,
-                    color: Colors.grey.shade300,
-                  ),
+                  horizontalLine(),
                 ],
               ),
             ),
