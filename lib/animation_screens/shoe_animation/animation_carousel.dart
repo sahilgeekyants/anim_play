@@ -1,3 +1,4 @@
+import 'package:anim_play/animation_screens/shoe_animation/shoe_assets.dart';
 import 'package:anim_play/utils/scale_config.dart';
 import 'package:flutter/material.dart';
 
@@ -17,40 +18,13 @@ class _AnimationCarouselState extends State<AnimationCarousel>
   void initState() {
     super.initState();
     _pageController =
-        PageController(initialPage: _currentPageIndex, viewportFraction: 0.8);
+        PageController(initialPage: _currentPageIndex, viewportFraction: 0.83);
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
     rotationAnimation = Tween<double>(begin: -degree * 60, end: -degree * 30)
         .animate(CurvedAnimation(
             parent: _animationController, curve: Curves.easeOut));
   }
-
-  List<Color> _colorList = [
-    Colors.orangeAccent,
-    Colors.purpleAccent,
-    Colors.greenAccent,
-    Colors.redAccent,
-    Colors.yellowAccent,
-  ];
-  List<String> _names = [
-    "KD13 EP",
-    "FD15 RP",
-    "KD23 FP",
-    "FD15 EP",
-    "KD13 RP",
-  ];
-  List<String> _prices = [
-    "Rs 12,995",
-    "Rs 11,495",
-    "Rs 10,099",
-    "Rs 12,995",
-    "Rs 11,495",
-  ];
-  List<String> images = [
-    "assets/blue_shoe.png",
-    "assets/red_shoe.png",
-    "assets/yellow_shoe.png",
-  ];
 
   @override
   void dispose() {
@@ -65,9 +39,10 @@ class _AnimationCarouselState extends State<AnimationCarousel>
     return Container(
       // color: Colors.blueAccent,
       color: Colors.transparent,
-      height: SizeScaleConfig.screenHeight * 0.38,
+      height: SizeScaleConfig.screenHeight * 0.43,
       width: SizeScaleConfig.screenWidth,
       child: PageView.builder(
+        clipBehavior: Clip.antiAliasWithSaveLayer,
         controller: _pageController,
         itemCount: 10,
         onPageChanged: (index) {
@@ -79,8 +54,7 @@ class _AnimationCarouselState extends State<AnimationCarousel>
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.only(
-              left: scaleConfig.scaleHeight(5),
-              right: scaleConfig.scaleHeight(5),
+              right: 25,
             ),
             // color: Colors.grey,
             color: Colors.transparent,
@@ -89,13 +63,14 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                 Positioned.fill(
                   child: Container(
                     margin: EdgeInsets.only(
-                      right: scaleConfig.scaleHeight(60),
-                      top: scaleConfig.scaleHeight(20),
+                      right: scaleConfig.scaleHeight(40),
+                      top: scaleConfig.scaleHeight(35),
                       bottom: scaleConfig.scaleHeight(20),
                     ),
-                    padding: EdgeInsets.only(left: scaleConfig.scaleHeight(20)),
+                    padding: EdgeInsets.only(left: scaleConfig.scaleHeight(21)),
                     decoration: BoxDecoration(
-                      color: _colorList[index >= 5 ? index % 5 : index],
+                      color:
+                          ShoeAssets.colorList[index >= 5 ? index % 5 : index],
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: Column(
@@ -103,20 +78,34 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                       children: [
                         SizedBox(height: 30),
                         Text(
-                          _names[index >= 5 ? index % 5 : index],
+                          ShoeAssets.names[index >= 5 ? index % 5 : index],
                           style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 21,
-                            fontWeight: FontWeight.bold,
+                            color:
+                                index % 2 == 0 ? Colors.white : Colors.black87,
+                            fontSize: 23,
+                            fontWeight: FontWeight.w800,
                           ),
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: 10),
                         Text(
-                          _prices[index >= 5 ? index % 5 : index],
+                          ShoeAssets.prices[index >= 5 ? index % 5 : index],
                           style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal,
+                            color: index % 2 == 0
+                                ? Colors.white70
+                                : Colors.black45,
+                            fontSize: 19,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Padding(
+                          padding: EdgeInsets.only(left: 4),
+                          child: Container(
+                            width: 1.5,
+                            height: 150,
+                            color: index % 2 == 0
+                                ? Colors.white30
+                                : Colors.black12,
                           ),
                         ),
                       ],
@@ -124,8 +113,8 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                   ),
                 ),
                 Positioned(
-                  bottom: 60,
-                  right: 10,
+                  bottom: 30,
+                  right: -25,
                   child: AnimatedBuilder(
                     animation: _animationController,
                     builder: (context, widget) {
@@ -139,10 +128,10 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                                 : -degree * 60,
                         child: Container(
                           color: Colors.transparent,
-                          height: 115,
-                          width: 200,
+                          height: 184,
+                          width: 320,
                           child: Image.asset(
-                            images[index >= 3 ? index % 3 : index],
+                            ShoeAssets.images[index >= 3 ? index % 3 : index],
                             fit: BoxFit.fitWidth,
                           ),
                         ),
