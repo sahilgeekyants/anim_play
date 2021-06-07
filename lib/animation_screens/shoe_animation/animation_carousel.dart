@@ -67,7 +67,7 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                       top: scaleConfig.scaleHeight(35),
                       bottom: scaleConfig.scaleHeight(20),
                     ),
-                    padding: EdgeInsets.only(left: scaleConfig.scaleHeight(20)),
+                    padding: EdgeInsets.only(left: scaleConfig.scaleHeight(21)),
                     decoration: BoxDecoration(
                       color:
                           ShoeAssets.colorList[index >= 5 ? index % 5 : index],
@@ -95,6 +95,17 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                                 : Colors.black45,
                             fontSize: 19,
                             fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Padding(
+                          padding: EdgeInsets.only(left: 4),
+                          child: Container(
+                            width: 1.5,
+                            height: 150,
+                            color: index % 2 == 0
+                                ? Colors.white30
+                                : Colors.black12,
                           ),
                         ),
                       ],
