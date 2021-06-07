@@ -2,7 +2,7 @@ import 'package:anim_play/utils/scale_config.dart';
 import 'package:flutter/material.dart';
 
 import 'animation_carousel.dart';
-import 'shoe_assets.dart';
+import '../shoe_assets.dart';
 
 class ShoeAnimation extends StatefulWidget {
   @override

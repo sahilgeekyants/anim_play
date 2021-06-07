@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'animation_screens/shoe_animation/shoe_animation.dart';
+import 'animation_screens/shoe_animation/home_page/shoe_animation.dart';
 
 void main() {
   runApp(MyApp());
