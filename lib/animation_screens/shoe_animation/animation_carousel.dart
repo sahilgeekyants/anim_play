@@ -1,3 +1,4 @@
+import 'package:anim_play/animation_screens/shoe_animation/shoe_assets.dart';
 import 'package:anim_play/utils/scale_config.dart';
 import 'package:flutter/material.dart';
 
@@ -24,33 +25,6 @@ class _AnimationCarouselState extends State<AnimationCarousel>
         .animate(CurvedAnimation(
             parent: _animationController, curve: Curves.easeOut));
   }
-
-  List<Color> _colorList = [
-    Colors.deepOrange.shade400,
-    Colors.orangeAccent.shade200,
-    Colors.indigoAccent.shade100,
-    Colors.tealAccent.shade700,
-    Colors.blueAccent.shade100,
-  ];
-  List<String> _names = [
-    "Air Max 97",
-    "Appha Savage",
-    "KD23 FP",
-    "FD15 EP",
-    "KD13 RP",
-  ];
-  List<String> _prices = [
-    "Rs 11,897",
-    "Rs 11,495",
-    "Rs 10,099",
-    "Rs 12,995",
-    "Rs 11,495",
-  ];
-  List<String> images = [
-    "assets/blue_shoe.png",
-    "assets/red_shoe.png",
-    "assets/yellow_shoe.png",
-  ];
 
   @override
   void dispose() {
@@ -95,7 +69,8 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                     ),
                     padding: EdgeInsets.only(left: scaleConfig.scaleHeight(20)),
                     decoration: BoxDecoration(
-                      color: _colorList[index >= 5 ? index % 5 : index],
+                      color:
+                          ShoeAssets.colorList[index >= 5 ? index % 5 : index],
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: Column(
@@ -103,7 +78,7 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                       children: [
                         SizedBox(height: 30),
                         Text(
-                          _names[index >= 5 ? index % 5 : index],
+                          ShoeAssets.names[index >= 5 ? index % 5 : index],
                           style: TextStyle(
                             color:
                                 index % 2 == 0 ? Colors.white : Colors.black87,
@@ -113,7 +88,7 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                         ),
                         SizedBox(height: 10),
                         Text(
-                          _prices[index >= 5 ? index % 5 : index],
+                          ShoeAssets.prices[index >= 5 ? index % 5 : index],
                           style: TextStyle(
                             color: index % 2 == 0
                                 ? Colors.white70
@@ -145,7 +120,7 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                           height: 184,
                           width: 320,
                           child: Image.asset(
-                            images[index >= 3 ? index % 3 : index],
+                            ShoeAssets.images[index >= 3 ? index % 3 : index],
                             fit: BoxFit.fitWidth,
                           ),
                         ),
