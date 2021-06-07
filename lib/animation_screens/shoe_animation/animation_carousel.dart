@@ -12,6 +12,7 @@ class _AnimationCarouselState extends State<AnimationCarousel>
   AnimationController _animationController;
   Animation<double> rotationAnimation;
   int _currentPageIndex = 0;
+  final double pie = 3.14;
   @override
   void initState() {
     super.initState();
@@ -19,7 +20,7 @@ class _AnimationCarouselState extends State<AnimationCarousel>
         PageController(initialPage: _currentPageIndex, viewportFraction: 0.8);
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 400));
-    rotationAnimation = Tween<double>(begin: 3.14 * 0.15, end: 3.14 * 0.3)
+    rotationAnimation = Tween<double>(begin: pie * 0.15, end: pie * 0.3)
         .animate(CurvedAnimation(
             parent: _animationController, curve: Curves.easeOut));
   }
@@ -133,10 +134,10 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                         angle: (index == _currentPageIndex)
                             ? _animationController.isAnimating
                                 ? rotationAnimation.value
-                                : 3.14 * 0.3
+                                : pie * 0.3
                             : _animationController.isAnimating
-                                ? rotationAnimation.value + 3.14 * 0.2
-                                : 3.14 * 0.15,
+                                ? rotationAnimation.value + pie * 0.2
+                                : pie * 0.15,
                         child: Container(
                           color: Colors.brown,
                           constraints: BoxConstraints(
