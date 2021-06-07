@@ -16,6 +16,8 @@ class _ShoeAnimationState extends State<ShoeAnimation> {
     SizeScaleConfig().calculateScaleRatios(context);
   }
 
+  final double sidespace = 30;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +51,7 @@ class _ShoeAnimationState extends State<ShoeAnimation> {
         children: [
           SizedBox(height: 20),
           Padding(
-            padding: EdgeInsets.only(left: 15),
+            padding: EdgeInsets.only(left: sidespace),
             child: Text(
               'Shoes',
               style: TextStyle(
@@ -64,7 +66,17 @@ class _ShoeAnimationState extends State<ShoeAnimation> {
             child: AnimationCarousel(),
           ),
           SizedBox(height: 20),
-          Center(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: sidespace),
+            child: Text(
+              "10 OPTIONS",
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
         ],
       )),
     );
