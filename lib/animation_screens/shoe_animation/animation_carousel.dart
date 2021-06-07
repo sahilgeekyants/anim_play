@@ -12,15 +12,15 @@ class _AnimationCarouselState extends State<AnimationCarousel>
   AnimationController _animationController;
   Animation<double> rotationAnimation;
   int _currentPageIndex = 0;
-  final double pie = 3.14;
+  final double degree = 3.14 / 180;
   @override
   void initState() {
     super.initState();
     _pageController =
         PageController(initialPage: _currentPageIndex, viewportFraction: 0.8);
     _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 400));
-    rotationAnimation = Tween<double>(begin: pie * 0.15, end: pie * 0.3)
+        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+    rotationAnimation = Tween<double>(begin: -degree * 60, end: -degree * 30)
         .animate(CurvedAnimation(
             parent: _animationController, curve: Curves.easeOut));
   }
@@ -82,15 +82,14 @@ class _AnimationCarouselState extends State<AnimationCarousel>
               left: scaleConfig.scaleHeight(5),
               right: scaleConfig.scaleHeight(5),
             ),
-            // color: Colors.red,
+            // color: Colors.grey,
             color: Colors.transparent,
             child: Stack(
               children: [
                 Positioned.fill(
                   child: Container(
                     margin: EdgeInsets.only(
-                      left: scaleConfig.scaleHeight(5),
-                      right: scaleConfig.scaleHeight(30),
+                      right: scaleConfig.scaleHeight(60),
                       top: scaleConfig.scaleHeight(20),
                       bottom: scaleConfig.scaleHeight(20),
                     ),
@@ -125,8 +124,8 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                   ),
                 ),
                 Positioned(
-                  bottom: 30,
-                  right: 90,
+                  bottom: 60,
+                  right: 10,
                   child: AnimatedBuilder(
                     animation: _animationController,
                     builder: (context, widget) {
@@ -134,20 +133,17 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                         angle: (index == _currentPageIndex)
                             ? _animationController.isAnimating
                                 ? rotationAnimation.value
-                                : pie * 0.3
+                                : -degree * 30
                             : _animationController.isAnimating
-                                ? rotationAnimation.value + pie * 0.2
-                                : pie * 0.15,
+                                ? (rotationAnimation.value + degree * 30)
+                                : -degree * 60,
                         child: Container(
-                          color: Colors.brown,
-                          constraints: BoxConstraints(
-                              maxHeight: scaleConfig.scaleHeight(180),
-                              maxWidth: scaleConfig.scaleHeight(70),
-                              minHeight: scaleConfig.scaleHeight(180),
-                              minWidth: scaleConfig.scaleHeight(70)),
+                          color: Colors.transparent,
+                          height: 115,
+                          width: 200,
                           child: Image.asset(
                             images[index >= 3 ? index % 3 : index],
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fitWidth,
                           ),
                         ),
                       );
