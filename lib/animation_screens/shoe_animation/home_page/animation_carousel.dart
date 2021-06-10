@@ -138,14 +138,13 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                               : _animationController.isAnimating
                                   ? (rotationAnimation.value + degree * 30)
                                   : -degree * 60,
-                          child: Container(
-                            color: Colors.transparent,
-                            // color: Colors.grey,
-                            height: 184,
-                            width: 320,
-                            child: HomePageHero(
-                              index: index,
-                              tag: 'shoe' + index.toString(),
+                          child: HomePageHero(
+                            tag: 'shoe' + index.toString(),
+                            child: Container(
+                              color: Colors.transparent,
+                              // color: Colors.grey,
+                              height: 184,
+                              width: 320,
                               child: Image.asset(
                                 ShoeAssets
                                     .images[index >= 3 ? index % 3 : index],

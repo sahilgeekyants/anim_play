@@ -1,6 +1,7 @@
 import 'package:anim_play/utils/scale_config.dart';
 import 'package:flutter/material.dart';
 import '../shoe_assets.dart';
+import 'description_page_hero.dart';
 
 class ShoeDescription extends StatefulWidget {
   final int index;
@@ -19,29 +20,34 @@ class _ShoeDescriptionState extends State<ShoeDescription> {
           height: SizeScaleConfig.screenHeight,
           color: Colors.white,
         ),
-        //
+        //use ClipOval or customPainter
+        // ClipOval(
+        //   // clipper: ,
+        //   child: Column(
+        //     children: [
+        //       //
+        //     ],
+        //   ),
+        // ),
         Container(
-          // width: SizeScaleConfig.screenWidth,
           width: double.infinity,
           height: SizeScaleConfig.screenHeight * 0.4,
           decoration: BoxDecoration(
             color: ShoeAssets
                 .colorList[widget.index >= 5 ? widget.index % 5 : widget.index],
             borderRadius: BorderRadius.only(
-              // bottomLeft: Radius.circular(SizeScaleConfig.screenWidth * 0.5),
-              // bottomRight: Radius.circular(SizeScaleConfig.screenWidth * 0.5),
               bottomLeft: Radius.elliptical(SizeScaleConfig.screenWidth * 0.7,
                   SizeScaleConfig.screenWidth * 0.5),
               bottomRight: Radius.elliptical(SizeScaleConfig.screenWidth * 0.6,
                   SizeScaleConfig.screenWidth * 0.2),
             ),
           ),
-          child: Container(
-            color: Colors.transparent,
-            height: 184,
-            width: 320,
-            child: Hero(
-              tag: 'shoe' + widget.index.toString(),
+          child: DescriptionPageHero(
+            tag: 'shoe' + widget.index.toString(),
+            child: Container(
+              color: Colors.transparent,
+              height: 184,
+              width: 320,
               child: Image.asset(
                 ShoeAssets.images[
                     widget.index >= 3 ? widget.index % 3 : widget.index],
