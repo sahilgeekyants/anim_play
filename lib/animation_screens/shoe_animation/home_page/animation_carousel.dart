@@ -2,6 +2,7 @@ import 'package:anim_play/animation_screens/shoe_animation/description_page/shoe
 import 'package:anim_play/animation_screens/shoe_animation/shoe_assets.dart';
 import 'package:anim_play/utils/scale_config.dart';
 import 'package:flutter/material.dart';
+import 'home_page_hero.dart';
 
 class AnimationCarousel extends StatefulWidget {
   @override
@@ -67,6 +68,7 @@ class _AnimationCarouselState extends State<AnimationCarousel>
               },
               child: Stack(
                 children: [
+                  //Card
                   Positioned.fill(
                     child: Container(
                       margin: EdgeInsets.only(
@@ -121,6 +123,7 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                       ),
                     ),
                   ),
+                  //shoe
                   Positioned(
                     bottom: 30,
                     right: -25,
@@ -135,12 +138,13 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                               : _animationController.isAnimating
                                   ? (rotationAnimation.value + degree * 30)
                                   : -degree * 60,
-                          child: Container(
-                            color: Colors.transparent,
-                            height: 184,
-                            width: 320,
-                            child: Hero(
-                              tag: 'shoe' + index.toString(),
+                          child: HomePageHero(
+                            tag: 'shoe' + index.toString(),
+                            child: Container(
+                              color: Colors.transparent,
+                              // color: Colors.grey,
+                              height: 184,
+                              width: 320,
                               child: Image.asset(
                                 ShoeAssets
                                     .images[index >= 3 ? index % 3 : index],
