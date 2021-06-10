@@ -42,18 +42,25 @@ class _ShoeDescriptionState extends State<ShoeDescription> {
                   SizeScaleConfig.screenWidth * 0.2),
             ),
           ),
-          child: DescriptionPageHero(
-            tag: 'shoe' + widget.index.toString(),
-            child: Container(
-              color: Colors.transparent,
-              height: 184,
-              width: 320,
-              child: Image.asset(
-                ShoeAssets.images[
-                    widget.index >= 3 ? widget.index % 3 : widget.index],
-                fit: BoxFit.fitWidth,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              DescriptionPageHero(
+                tag: 'shoe' + widget.index.toString(),
+                child: Container(
+                  color: Colors.transparent,
+                  // color: Colors.grey,
+                  height: 184,
+                  width: 320,
+                  child: Image.asset(
+                    ShoeAssets.images[
+                        widget.index >= 3 ? widget.index % 3 : widget.index],
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
         ),
         //
