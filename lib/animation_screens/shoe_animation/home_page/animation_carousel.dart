@@ -35,14 +35,18 @@ class _AnimationCarouselState extends State<AnimationCarousel>
   }
 
   final SizeScaleConfig scaleConfig = SizeScaleConfig();
+  final double widthPoint = SizeScaleConfig.screenWidth / 375; //1
 
   @override
   Widget build(BuildContext context) {
+    print('width : ${SizeScaleConfig.screenWidth}');
+    print('height : ${widthPoint * 350}');
     return Container(
       // color: Colors.blueAccent,
       color: Colors.transparent,
-      height: SizeScaleConfig.screenHeight * 0.43,
-      width: SizeScaleConfig.screenWidth,
+      // height: SizeScaleConfig.screenHeight * 0.43,
+      height: widthPoint * 350, //350
+      width: SizeScaleConfig.screenWidth, //375
       child: PageView.builder(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         controller: _pageController,
@@ -86,7 +90,7 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 30),
+                          SizedBox(height: widthPoint * 30),
                           Text(
                             ShoeAssets.names[index >= 5 ? index % 5 : index],
                             style: TextStyle(
@@ -97,7 +101,7 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                               fontWeight: FontWeight.w800,
                             ),
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(height: widthPoint * 10),
                           Text(
                             ShoeAssets.prices[index >= 5 ? index % 5 : index],
                             style: TextStyle(
@@ -108,12 +112,12 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                          SizedBox(height: 8),
+                          SizedBox(height: widthPoint * 8),
                           Padding(
                             padding: EdgeInsets.only(left: 4),
                             child: Container(
                               width: 1.5,
-                              height: 150,
+                              height: widthPoint * 150, // 150
                               color: index % 2 == 0
                                   ? Colors.white30
                                   : Colors.black12,
@@ -125,8 +129,8 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                   ),
                   //shoe
                   Positioned(
-                    bottom: 30,
-                    right: -25,
+                    bottom: widthPoint * 30, // 30,
+                    right: -widthPoint * 25, // -25,
                     child: AnimatedBuilder(
                       animation: _animationController,
                       builder: (context, widget) {
@@ -143,8 +147,8 @@ class _AnimationCarouselState extends State<AnimationCarousel>
                             child: Container(
                               color: Colors.transparent,
                               // color: Colors.grey,
-                              height: 184,
-                              width: 320,
+                              height: widthPoint * 184, // 184,
+                              width: widthPoint * 320, //320,
                               child: Image.asset(
                                 ShoeAssets
                                     .images[index >= 3 ? index % 3 : index],
