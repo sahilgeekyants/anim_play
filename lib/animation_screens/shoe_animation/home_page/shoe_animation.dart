@@ -98,8 +98,8 @@ class _ShoeAnimationState extends State<ShoeAnimation> {
         ),
       ),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          physics: ClampingScrollPhysics(),
           children: [
             SizedBox(height: 20),
             Padding(
@@ -114,9 +114,9 @@ class _ShoeAnimationState extends State<ShoeAnimation> {
               ),
             ),
             SizedBox(height: 20),
-            Flexible(
-              child: AnimationCarousel(),
-            ),
+            //
+            AnimationCarousel(),
+            //
             SizedBox(height: 20),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: sidespace),

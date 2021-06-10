@@ -1,9 +1,11 @@
+import 'package:anim_play/utils/scale_config.dart';
 import 'package:flutter/material.dart';
 
 class HomePageHero extends StatelessWidget {
   HomePageHero({Key key, this.tag, @required this.child}) : super(key: key);
   final Object tag;
   final Widget child;
+  final double widthPoint = SizeScaleConfig.screenWidth / 375; //1
   @override
   Widget build(BuildContext context) {
     return Hero(
@@ -16,8 +18,10 @@ class HomePageHero extends StatelessWidget {
             begin.bottomLeft,
           ),
           end: Rect.fromPoints(
-            Offset(end.topRight.dx + 25, end.topRight.dy - 160),
-            Offset(end.bottomLeft.dx + 25, end.bottomLeft.dy - 160),
+            Offset(end.topRight.dx + widthPoint * 25,
+                end.topRight.dy - widthPoint * 160),
+            Offset(end.bottomLeft.dx + widthPoint * 25,
+                end.bottomLeft.dy - widthPoint * 160),
           ),
         );
       },
